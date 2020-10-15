@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Esprima.Ast;
 using Jint.Native;
 using Jint.Runtime.Environments;
@@ -42,6 +43,9 @@ namespace Jint.Runtime.Interpreter
             }
             _jintStatements = jintStatements;
         }
+
+        public async Task<Completion> ExecuteAsync()
+            => await Task.Run(() => Execute());
 
         public Completion Execute()
         {

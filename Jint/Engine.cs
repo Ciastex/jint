@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Esprima;
 using Esprima.Ast;
 using Jint.Native;
@@ -349,10 +350,16 @@ namespace Jint
             CallStack.Clear();
         }
 
+        public async Task<Engine> ExecuteAsync(string source)
+            => await Task.Run(() => Execute(source));
+
         public Engine Execute(string source)
         {
             return Execute(source, DefaultParserOptions);
         }
+
+        public async Task<Engine> ExecuteAsync(string source, ParserOptions parserOptions)
+            => await Task.Run(() => Execute(source, parserOptions));
 
         public Engine Execute(string source, ParserOptions parserOptions)
         {
