@@ -216,7 +216,7 @@ namespace Jint
         }
     
 
-        internal LexicalEnvironment GlobalEnvironment { get; }
+        public LexicalEnvironment GlobalEnvironment { get; }
         public GlobalObject Global { get; }
         public ObjectConstructor Object { get; }
         public FunctionConstructor Function { get; }
